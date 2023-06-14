@@ -34,14 +34,27 @@
                     
                     <div class="col s2">
                         <label>E-mail:</label>
-                        <input type="text" name="cpf">
+                        <input type="text" name="email">
                     </div>
                     
+                    <div class="col s4">
+                        <label>Endereço:</label>
+                        <input type="text" name="endereco">
+                    </div>
+                    
+                    <div class="col s4">
+                        <label>Bairro:</label>
+                        <input type="text" name="bairro">
+                    </div>
                     
                     <div class="col s2">
-                        <label>Data Serviço:</label>
-                        <input type="date" name="data_servico">
+                        <label>Telefone:</label>
+                        <input type="text" name="telefone">
                     </div>
+                    
+                    
+                    
+                    
                     
 
                     <button class="btn waves-effect waves-light" type="submit" name="action">
