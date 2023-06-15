@@ -1,18 +1,25 @@
 <?php
 include './conexao.php';
-$nome = $_POST['nome'];
-$cpf = $_POST['cpf'];
-$data_servico = $_POST['data_servico'];
-$situacao = $_POST['situacao'];
+$nome       = $_POST['nome'];
+$cpf        = $_POST['cpf'];
+$email      = $_POST['email'];
+$endereco   = $_POST['endereco'];
+$bairro     = $_POST['bairro'];
+$telefone   = $_POST['telefone'];
 
-$inserir = $conn->query("INSERT INTO ordem_servico VALUES
-      (0,'$nome','$cpf','$data_servico')");
+
+$inserir = $conn->query("INSERT INTO cliente VALUES
+(0,'$nome','$cpf','$email','$endereco','$bairro','$telefone')");
 
 if ($inserir) {
     echo 'Cadastro REALIZADO';
+    print '\n Redirecionando...\n ';
+    header ('Refresh:3; URL=cadastro.php');
     echo '<a href="cadastro.php"><p><br><hr>voltar<hr></a></p>';
 } else {
     echo 'Cadastro Não REALIZADO';
+    print '\n Redirecionando... \n';
+    header ('Refresh:3; URL=cadastro.php');
     echo '<a href="cadastro.php"><p><br><hr>voltar<hr></a></p>';
 }
 

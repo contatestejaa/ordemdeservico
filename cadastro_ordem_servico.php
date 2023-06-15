@@ -22,34 +22,92 @@
          include './menu.php';
         ?>
 <div class="container">
-    <h6>Adicionar uma nova Ordem de Serviço</h6>
+    <h5 class="blue-text lighten-5">Gerar ordem de Serviço</h5>
     <div class="row">
+        <div class="col s12">
         <table>
             <thead>
                <th>ID</th>
                <th>Nome</th>
                <th>CPF</th>
-               <th>Data do Serviço</th>
             </thead>
         <?php
              include './conexao.php';
              
-             $id_pesquisa = $_GET['id'];
+             $id_pesquisa = @$_GET['id'];
              
              echo "ID selecionado: " , $id_pesquisa,"<br>";
-             $sql = "SELECT * FROM ordem_servico WHERE id='$id_pesquisa'";
+             $sql = "SELECT * FROM cliente WHERE id='$id_pesquisa'";
              $restultado = mysqli_query($conn, $sql);
              while ($dados = mysqli_fetch_array($restultado)) {
-        ?>
+        
+            echo' 
             <tbody>
-               <td> <?php echo  $dados['id'] ?></td>
-               <td> <?php echo $dados['nome'] ?></td>
-               <td> <?php echo $dados['cpf'] ?></td>
-               <td> <?php echo (date("d/m/y", strtotime($dados['data_servico']))) ?></td>
+               <td>  '.$dados['id'].'</td>
+               <td> '. $dados['nome'].'</td>
+               <td> '. $dados['cpf'].'</td>
             </tbody>
             
-         <?php } ?>
+          ';
+            
+           
+
+echo '   
+      <h3 class="blue-text lighten-5">Dados da Ordem de Serviço:</h3>    
+        <form action="cadastro_ordem_servico.php" method="post">
+            <div class="row">
+                <div class="col s4">
+                    <label>Placa</label>          
+                    <input type="text" name="placa">
+                </div>    
+                
+                <div class="col s4">
+                    <label>Nome do veículo</label>          
+                    <input type="text" name="nome_veiculo">
+                </div>    
+                
+                <div class="col s4">
+                    <label>Marca</label>          
+                    <input type="text" name="marca">
+                </div>    
+                
+              <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Cadastrar
+                        <i class="material-icons right">send</i>
+                    </button>
+                
+            </div> 
+            
+        </form>
+  
+
+
+';
+include './conexao.php';
+            $nome_cliente = $dados['nome'];
+            $cpf_cliente = $dados['cpf'];
+            
+            $placa        = @$dados['placa'];
+            $nome_veiculo = @$dados['nome_veiculo'];
+            $marca        = @$dados['marca'];
+            
+            $inserir = $conn -> query("INSERT INTO ordem_servico VALUES
+ (0,'$nome_cliente','$cpf_cliente','$placa','$nome_veiculo','$marca')");
+
+            if($inserir){
+                echo "Cadastro efetuado";
+            }else{
+                
+            }
           
+             }  ?>
+        </table>
+        </div
+        
+        
+        
+        
+        
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js">
       

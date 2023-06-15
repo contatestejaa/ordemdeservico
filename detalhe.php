@@ -29,14 +29,16 @@
                <th>ID</th>
                <th>Nome</th>
                <th>CPF</th>
-               <th>Data do Serviço</th>
-                
+               <th>E-mail</th>
+               <th>Endereço </th>
+               <th>Bairro </th>
+               <th>Telefone </th>
             </thead>
             <?php
              include './conexao.php';
              $id_pesquisa = $_GET['id'];
      echo "ID selecionado: " , $id_pesquisa,"<br>";
-     $sql = "SELECT * FROM ordem_servico WHERE id='$id_pesquisa'";
+     $sql = "SELECT * FROM cliente WHERE id='$id_pesquisa'";
      $restultado = mysqli_query($conn, $sql);
      while ($dados = mysqli_fetch_array($restultado)) {
             ?>
@@ -44,7 +46,18 @@
                  <td> <?php echo  $dados['id'] ?></td>
                  <td> <?php echo $dados['nome'] ?></td>
                  <td> <?php echo $dados['cpf'] ?></td>
-                 <td> <?php echo (date("d/m/y", strtotime($dados['data_servico']))) ?></td>
+                 <td> <?php echo $dados['email'] ?></td>
+                 <td> <?php echo $dados['endereco'] ?></td>
+                 <td> <?php echo $dados['bairro'] ?></td>
+                 <td> <?php echo $dados['telefone'] ?></td>
+                 
+         <td> 
+          <a href="cadastro_ordem_servico.php?id=<?php echo $dados['id'] ?>">
+          <i class="material-icons prefix" title="Gerar OS">content_paste
+</i> 
+          </a>   
+         </td>   
+                 
               </tbody>
             
         <?php } ?>

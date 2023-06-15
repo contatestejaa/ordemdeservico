@@ -51,21 +51,13 @@
                         <label>Telefone:</label>
                         <input type="text" name="telefone">
                     </div>
-                    
-                    
-                    
-                    
-                    
 
                     <button class="btn waves-effect waves-light" type="submit" name="action">
                         Cadastrar
                         <i class="material-icons right">send</i>
                     </button>
-
-
                 </div>
             </div>     
-
         </form>
 
 

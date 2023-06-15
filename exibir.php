@@ -37,11 +37,6 @@
                 </div>
                 
             </div>
-            
-            
-            
-            
-            
       <h6 class="blue-text lighten-5">Clientes cadastrados: </h6>
             <table>
                 <thead class="">
@@ -50,8 +45,8 @@
                 </thead>
                 <?php
                 include './conexao.php';
-                  $nome_pesquisa = @$_POST['nome_pesquisa'];
-                $sql = "SELECT * FROM ordem_servico WHERE nome LIKE '%".$nome_pesquisa."%'";
+                $nome_pesquisa = @$_POST['nome_pesquisa'];
+                $sql = "SELECT * FROM cliente WHERE nome LIKE '%".$nome_pesquisa."%'";
                 $restultado = mysqli_query($conn, $sql);
                 while ($dados = mysqli_fetch_array($restultado)) {
                     ?>
